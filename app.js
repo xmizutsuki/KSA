@@ -4,6 +4,20 @@ const views={home:$('homeView'),quiz:$('quizView'),result:$('resultView')};
 const state={mode:'cat',length:20,index:0,ability:0.5,session:[],current:null,answered:false,used:new Set(),categoryCounts:{},lastMode:'cat'};
 const STORAGE='ksaNurseCatStatsV1';
 const letters=['A','B','C','D','E'];
+const CATEGORY_PRIORITY={
+ 'Postoperative & ABCDE':1.8,
+ 'Bleeding & Shock':1.65,
+ 'Respiratory / DVT / PE':1.55,
+ 'Sepsis':1.5,
+ 'Prioritization & Communication':1.45,
+ 'Transfusion & Pharmacology':1.4,
+ 'Fluids / Electrolytes / Calculations':1.3,
+ 'Infection & Patient Safety':1.25,
+ 'Wounds & Drains':1.2,
+ 'Preoperative Care':1.15,
+ 'KFSHRC & Interview':1.1,
+ 'Discharge & Behavioral':.95
+};
 
 function loadStats(){try{return JSON.parse(localStorage.getItem(STORAGE))||{answered:0,correct:0,wrongIds:[],ability:.5}}catch{return{answered:0,correct:0,wrongIds:[],ability:.5}}}
 function saveStats(s){localStorage.setItem(STORAGE,JSON.stringify(s));}
@@ -23,7 +37,7 @@ function poolForMode(){const s=loadStats();if(state.mode==='cases')return window
 function pickQuestion(){let pool=poolForMode().filter(q=>!state.used.has(q.id));if(!pool.length)return null;
 if(state.mode==='cat'){
  const target=levelFromAbility(state.ability);
- pool=pool.map(q=>{const catPenalty=(state.categoryCounts[q.category]||0)*.32;const diffPenalty=Math.abs(q.difficulty-target);const jitter=Math.random()*.35;return{q,score:diffPenalty+catPenalty+jitter};}).sort((a,b)=>a.score-b.score);return pool[0].q;
+ pool=pool.map(q=>{const weight=CATEGORY_PRIORITY[q.category]||1;const catPenalty=((state.categoryCounts[q.category]||0)*.38)/weight;const relevanceBonus=(weight-1)*.28;const diffPenalty=Math.abs(q.difficulty-target);const jitter=Math.random()*.35;return{q,score:diffPenalty+catPenalty-relevanceBonus+jitter};}).sort((a,b)=>a.score-b.score);return pool[0].q;
 }
 return shuffle(pool)[0];}
 
