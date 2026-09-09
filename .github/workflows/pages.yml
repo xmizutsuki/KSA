@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Validate JavaScript
+      - name: Validate JavaScript and question bank
         run: |
           node --check app.js
           node --check sources.js
@@ -31,6 +31,28 @@ jobs:
           node --check questions-2.js
           node --check questions-3.js
           node --check questions-4.js
+          node <<'NODE'
+          global.window = {};
+          require('./sources.js');
+          require('./questions-1.js');
+          require('./questions-2.js');
+          require('./questions-3.js');
+          require('./questions-4.js');
+          const qs = window.KSA_QUESTIONS;
+          const sources = window.KSA_SOURCES;
+          if (qs.length !== 65) throw new Error(`Expected 65 questions, found ${qs.length}`);
+          const ids = new Set();
+          for (const q of qs) {
+            if (ids.has(q.id)) throw new Error(`Duplicate question id ${q.id}`);
+            ids.add(q.id);
+            if (!Array.isArray(q.options) || q.options.length !== 5) throw new Error(`Question ${q.id} does not have exactly 5 options`);
+            if (!Number.isInteger(q.answer) || q.answer < 0 || q.answer > 4) throw new Error(`Question ${q.id} has invalid answer index`);
+            if (!q.category || !q.q || !q.rationale) throw new Error(`Question ${q.id} is missing required content`);
+            if (q.difficulty < 1 || q.difficulty > 5) throw new Error(`Question ${q.id} has invalid difficulty`);
+            if (q.source && !sources[q.source]) throw new Error(`Question ${q.id} references missing source ${q.source}`);
+          }
+          console.log(`Validated ${qs.length} questions successfully.`);
+          NODE
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
