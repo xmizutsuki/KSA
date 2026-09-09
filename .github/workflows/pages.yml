@@ -27,20 +27,14 @@ jobs:
         run: |
           node --check app.js
           node --check sources.js
-          node --check questions-1.js
-          node --check questions-2.js
-          node --check questions-3.js
-          node --check questions-4.js
+          for f in questions-{1..13}.js; do node --check "$f"; done
           node <<'NODE'
           global.window = {};
           require('./sources.js');
-          require('./questions-1.js');
-          require('./questions-2.js');
-          require('./questions-3.js');
-          require('./questions-4.js');
+          for (let i = 1; i <= 13; i++) require(`./questions-${i}.js`);
           const qs = window.KSA_QUESTIONS;
           const sources = window.KSA_SOURCES;
-          if (qs.length !== 65) throw new Error(`Expected 65 questions, found ${qs.length}`);
+          if (qs.length !== 200) throw new Error(`Expected 200 questions, found ${qs.length}`);
           const ids = new Set();
           for (const q of qs) {
             if (ids.has(q.id)) throw new Error(`Duplicate question id ${q.id}`);
