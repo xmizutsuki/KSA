@@ -19,7 +19,7 @@ Aplicativo web simples para revisão intensiva antes de entrevista para **Staff 
 
 ## Banco de questões
 
-**200 questões originais/parafraseadas**, com maior peso para os conteúdos mais relevantes para uma entrevista de enfermagem cirúrgica e para reconhecimento de deterioração clínica.
+**230 questões originais/parafraseadas**, com maior peso para os conteúdos mais relevantes para uma entrevista de enfermagem cirúrgica e para reconhecimento de deterioração clínica.
 
 Áreas cobertas:
 
@@ -34,7 +34,9 @@ Aplicativo web simples para revisão intensiva antes de entrevista para **Staff 
 - Feridas, deiscência e evisceração
 - Drenos, NG tube, Foley e chest tube
 - Transfusão e reações transfusionais
-- Anticoagulantes, opioides, insulina e antídotos
+- Anticoagulantes, opioides, sedativos, insulina e antídotos/reversores
+- Farmacologia perioperatória: naloxona, flumazenil, protamina, vitamina K/PCC, idarucizumabe, andexanet alfa, acetilcisteína, digoxin immune Fab, sugamadex, dantroleno e emulsão lipídica
+- Segurança com medicamentos comuns da Surgery Unit, incluindo cefazolina, vancomicina, ketorolaco, ondansetrona, metoclopramida e potássio IV
 - Eletrólitos e fluid balance
 - Cálculos de medicamentos e infusões
 - Infection control, HAI e CAUTI
@@ -59,6 +61,10 @@ As perguntas não foram copiadas de bancos comerciais. Elas foram criadas/parafr
 - NCBI Bookshelf — Perioperative Care: https://www.ncbi.nlm.nih.gov/books/NBK613066/
 - NCBI Bookshelf — Wound Dehiscence: https://www.ncbi.nlm.nih.gov/books/NBK551712/
 - NHS — Transfusion reaction management: https://www.rightdecisions.scot.nhs.uk/nhs-borders-clinical-guidelines/acute-services/blood-transfusion/transfusion-policy/
+- DailyMed/FDA labels for naloxone, flumazenil, protamine, enoxaparin, warfarin, idarucizumab, andexanet alfa, acetylcysteine, digoxin immune Fab and sugammadex
+- ACC — Management of anticoagulant-related bleeding
+- MHAUS — Malignant hyperthermia / dantrolene
+- ASRA — Local Anesthetic Systemic Toxicity / lipid emulsion
 
 ## Rodar localmente
 
