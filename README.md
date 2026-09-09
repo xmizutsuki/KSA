@@ -5,6 +5,7 @@ Aplicativo web simples para revisão intensiva antes de entrevista para **Staff 
 ## Recursos
 
 - **CAT adaptativo (estudo):** começa em dificuldade média e ajusta o nível conforme acertos e erros.
+- CAT com **20, 30, 40, 50 ou 80 questões**.
 - **Casos clínicos:** priorização, deterioração pós-operatória, hemorragia, sepse, PE/DVT, transfusão, feridas e segurança.
 - **Revisão rápida:** 10 questões aleatórias.
 - **Revisão de erros:** questões erradas ficam salvas no navegador e podem ser refeitas.
@@ -16,27 +17,30 @@ Aplicativo web simples para revisão intensiva antes de entrevista para **Staff 
 
 > O modo CAT é **CAT-style para estudo** e não implementa um modelo psicométrico IRT validado. A estimativa de nível serve apenas para orientar a revisão.
 
-## Banco inicial
+## Banco de questões
 
-65 questões originais/parafraseadas cobrindo:
+**200 questões originais/parafraseadas**, com maior peso para os conteúdos mais relevantes para uma entrevista de enfermagem cirúrgica e para reconhecimento de deterioração clínica.
 
-- KFSHRC e entrevista
-- Avaliação pré-operatória
+Áreas cobertas:
+
+- KFSHRC, valores institucionais e entrevista
+- Avaliação pré-operatória e WHO Surgical Safety Checklist
 - Pós-operatório e ABCDE
-- Deterioração clínica
+- Reconhecimento de deterioração / Rapid Response
 - Hemorragia e choque
 - Complicações respiratórias
 - DVT / pulmonary embolism
-- Sepse
+- Sepse e choque séptico
 - Feridas, deiscência e evisceração
-- Drenos e dispositivos
-- Transfusão
-- Anticoagulantes, opioides e antídotos
+- Drenos, NG tube, Foley e chest tube
+- Transfusão e reações transfusionais
+- Anticoagulantes, opioides, insulina e antídotos
 - Eletrólitos e fluid balance
-- Cálculos de medicamentos
-- Infection control e segurança do paciente
+- Cálculos de medicamentos e infusões
+- Infection control, HAI e CAUTI
+- Segurança do paciente
 - Priorização, delegação, SBAR e documentação
-- Alta e perguntas comportamentais
+- Alta, educação do paciente e perguntas comportamentais
 
 ## Referências principais
 
@@ -48,7 +52,10 @@ As perguntas não foram copiadas de bancos comerciais. Elas foram criadas/parafr
 - WHO Surgical Safety Checklist: https://www.who.int/teams/integrated-health-services/quality-of-care-and-patient-safety/patient-safety-guidance-and-tools/safe-surgery/tool-and-resources
 - Surviving Sepsis Campaign / SCCM: https://sccm.org/survivingsepsiscampaign/guidelines-and-resources/surviving-sepsis-campaign-adult-guidelines
 - CDC Standard Precautions: https://www.cdc.gov/infection-control/hcp/basics/standard-precautions.html
+- CDC CAUTI recommendations: https://www.cdc.gov/infection-control/hcp/cauti/summary-of-recommendations.html
+- CDC Healthcare-Associated Infections: https://www.cdc.gov/healthcare-associated-infections/about/index.html
 - CDC DVT/PE: https://www.cdc.gov/blood-clots/about/
+- AHRQ PSNet — Rapid Response Systems: https://psnet.ahrq.gov/primer/rapid-response-systems
 - NCBI Bookshelf — Perioperative Care: https://www.ncbi.nlm.nih.gov/books/NBK613066/
 - NCBI Bookshelf — Wound Dehiscence: https://www.ncbi.nlm.nih.gov/books/NBK551712/
 - NHS — Transfusion reaction management: https://www.rightdecisions.scot.nhs.uk/nhs-borders-clinical-guidelines/acute-services/blood-transfusion/transfusion-policy/
