@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1f3a" />
+  <title>KSA Nurse CAT — Surgery Interview Prep</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">KSA</div>
+      <div>
+        <h1>KSA Nurse CAT</h1>
+        <p>Staff Nurse I • Surgery Unit • Interview Review</p>
+      </div>
+    </div>
+    <button id="homeBtn" class="ghost small" type="button">Início</button>
+  </header>
+
+  <main class="container">
+    <section id="homeView" class="view active">
+      <div class="hero card">
+        <div>
+          <span class="eyebrow">Preparação rápida</span>
+          <h2>Treine raciocínio clínico no estilo CAT</h2>
+          <p>Questões adaptativas, casos clínicos, revisão de erros, cálculos e perguntas de entrevista. Todas as questões têm 5 alternativas.</p>
+        </div>
+        <div class="hero-stat">
+          <strong id="bankCount">0</strong>
+          <span>questões no banco</span>
+        </div>
+      </div>
+
+      <div class="grid modes">
+        <button class="mode-card" data-mode="cat">
+          <span class="mode-icon">◎</span>
+          <strong>CAT Adaptativo</strong>
+          <small>Dificuldade sobe ou desce conforme seu desempenho.</small>
+        </button>
+        <button class="mode-card" data-mode="cases">
+          <span class="mode-icon">✚</span>
+          <strong>Casos Clínicos</strong>
+          <small>Prioridade, deterioração, pós-operatório e emergências.</small>
+        </button>
+        <button class="mode-card" data-mode="quick">
+          <span class="mode-icon">⚡</span>
+          <strong>Revisão Rápida</strong>
+          <small>10 questões aleatórias para revisar em poucos minutos.</small>
+        </button>
+        <button class="mode-card" data-mode="errors">
+          <span class="mode-icon">↺</span>
+          <strong>Revisar Erros</strong>
+          <small>Refaça questões que você errou anteriormente.</small>
+        </button>
+      </div>
+
+      <section class="card setup-card">
+        <div>
+          <h3>Configuração do CAT</h3>
+          <p class="muted">O algoritmo é inspirado em CAT para estudo; não é um CAT psicométrico/IRT validado.</p>
+        </div>
+        <label>
+          Número de questões
+          <select id="catLength">
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="card">
+        <div class="section-title">
+          <div>
+            <span class="eyebrow">Desempenho local</span>
+            <h3>Seu progresso</h3>
+          </div>
+          <button id="resetStats" class="ghost danger small" type="button">Limpar histórico</button>
+        </div>
+        <div class="stats-grid">
+          <div><strong id="statAnswered">0</strong><span>respondidas</span></div>
+          <div><strong id="statAccuracy">—</strong><span>acertos</span></div>
+          <div><strong id="statErrors">0</strong><span>para revisar</span></div>
+          <div><strong id="statLevel">—</strong><span>nível CAT</span></div>
+        </div>
+      </section>
+
+      <section class="card compact">
+        <h3>Referências principais</h3>
+        <p class="muted">Questões originais/parafraseadas com base em WHO, CDC, Surviving Sepsis Campaign/SCCM, NCBI e páginas oficiais do KFSHRC. Este app é educacional e não substitui protocolos institucionais.</p>
+      </section>
+    </section>
+
+    <section id="quizView" class="view">
+      <div class="quiz-head">
+        <div>
+          <span id="modeLabel" class="pill">CAT</span>
+          <span id="categoryLabel" class="muted"></span>
+        </div>
+        <div class="quiz-meta">
+          <span id="progressText">1 / 20</span>
+          <span id="difficultyText">Nível 3</span>
+        </div>
+      </div>
+      <div class="progress"><div id="progressBar"></div></div>
+
+      <article class="card question-card">
+        <div id="caseBox" class="case-box hidden"></div>
+        <h2 id="questionText"></h2>
+        <div id="options" class="options"></div>
+        <div id="feedback" class="feedback hidden"></div>
+        <div class="question-actions">
+          <button id="nextBtn" class="primary hidden" type="button">Próxima questão</button>
+          <button id="quitBtn" class="ghost" type="button">Encerrar</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="resultView" class="view">
+      <article class="card result-card">
+        <span class="eyebrow">Sessão concluída</span>
+        <h2 id="resultTitle">Resultado</h2>
+        <div class="result-score"><strong id="resultAccuracy">0%</strong><span id="resultDetail"></span></div>
+        <div id="resultBreakdown" class="breakdown"></div>
+        <div class="result-actions">
+          <button id="restartBtn" class="primary" type="button">Treinar novamente</button>
+          <button id="resultHomeBtn" class="ghost" type="button">Voltar ao início</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>KSA Nurse CAT • ferramenta pessoal de revisão • conteúdo educacional</p>
+  </footer>
+
+  <script src="sources.js"></script>
+  <script src="questions-1.js"></script>
+  <script src="questions-2.js"></script>
+  <script src="questions-3.js"></script>
+  <script src="questions-4.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
