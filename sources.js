@@ -26,6 +26,7 @@ STANDARD_PHARM:{label:"Core pharmacology review — verify with institutional po
 STANDARD_CLINICAL:{label:"Core adult surgical-nursing review — verify with institutional protocol",url:"https://www.ncbi.nlm.nih.gov/books/"},
 STANDARD_NURSING:{label:"Core nursing prioritization/delegation review",url:"https://www.ncbi.nlm.nih.gov/books/"},
 CALC:{label:"Medication calculation practice — generated for study",url:""},
-INTERVIEW:{label:"Behavioral interview practice — STAR/SBAR structure",url:""}
+INTERVIEW:{label:"Behavioral interview practice — STAR/SBAR structure",url:""},
+LEWIS_STUDY:{label:"Lewis's Medical-Surgical Nursing — uploaded postoperative, chest-tube, PE and VTE study extract",url:""}
 };
 window.KSA_QUESTIONS=[];
