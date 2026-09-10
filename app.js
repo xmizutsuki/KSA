@@ -36,7 +36,12 @@ function updateHome(){
 function start(mode){
  state.mode=mode;state.lastMode=mode;state.index=0;state.session=[];state.used=new Set();state.categoryCounts={};state.answered=false;
  const stored=loadStats();state.ability=mode==='cat'?(stored.ability??.5):.5;
- state.length=mode==='cat'?Number($('catLength').value):(mode==='quick'?10:(mode==='cases'?Math.min(20,window.KSA_QUESTIONS.filter(q=>q.case).length):20));
+ const selectedLength=Number($('catLength').value);
+ if(mode==='cat') state.length=selectedLength;
+ else if(mode==='hard') state.length=Math.min(selectedLength,window.KSA_QUESTIONS.filter(q=>q.difficulty>=4).length);
+ else if(mode==='quick') state.length=10;
+ else if(mode==='cases') state.length=Math.min(20,window.KSA_QUESTIONS.filter(q=>q.case).length);
+ else state.length=20;
  if(mode==='errors'){
    const ids=new Set(stored.wrongIds||[]);
    const pool=window.KSA_QUESTIONS.filter(q=>ids.has(q.id));
@@ -49,13 +54,15 @@ function start(mode){
 function poolForMode(){
  const s=loadStats();
  if(state.mode==='cases')return window.KSA_QUESTIONS.filter(q=>q.case);
+ if(state.mode==='hard')return window.KSA_QUESTIONS.filter(q=>q.difficulty>=4);
  if(state.mode==='errors'){const ids=new Set(s.wrongIds||[]);return window.KSA_QUESTIONS.filter(q=>ids.has(q.id));}
  return window.KSA_QUESTIONS;
 }
 function pickQuestion(){
  let pool=poolForMode().filter(q=>!state.used.has(q.id));if(!pool.length)return null;
  if(state.mode==='cat'){
-   const target=levelFromAbility(state.ability);
+   // This build intentionally starts at a hard floor (level 4) because the goal is interview-level clinical reasoning.
+   const target=Math.max(4,levelFromAbility(state.ability));
    pool=pool.map(q=>{
      const weight=CATEGORY_PRIORITY[q.category]||1;
      const catPenalty=((state.categoryCounts[q.category]||0)*.38)/weight;
@@ -63,6 +70,16 @@ function pickQuestion(){
      const diffPenalty=Math.abs(q.difficulty-target);
      const jitter=Math.random()*.35;
      return{q,score:diffPenalty+catPenalty-relevanceBonus+jitter};
+   }).sort((a,b)=>a.score-b.score);
+   return pool[0].q;
+ }
+ if(state.mode==='hard'){
+   pool=pool.map(q=>{
+     const weight=CATEGORY_PRIORITY[q.category]||1;
+     const catPenalty=((state.categoryCounts[q.category]||0)*.32)/weight;
+     const difficultyBonus=(5-q.difficulty)*.8;
+     const jitter=Math.random()*.5;
+     return{q,score:difficultyBonus+catPenalty+jitter};
    }).sort((a,b)=>a.score-b.score);
    return pool[0].q;
  }
@@ -75,7 +92,7 @@ function nextQuestion(){
  state.current=q;state.used.add(q.id);state.categoryCounts[q.category]=(state.categoryCounts[q.category]||0)+1;state.answered=false;renderQuestion(q);
 }
 function renderQuestion(q){
- $('modeLabel').textContent=state.mode==='cat'?'CAT ADAPTATIVO':state.mode==='cases'?'CASOS CLÍNICOS':state.mode==='errors'?'REVISÃO DE ERROS':'REVISÃO RÁPIDA';
+ $('modeLabel').textContent=state.mode==='cat'?'CAT ADAPTATIVO':state.mode==='hard'?'DESAFIO AVANÇADO':state.mode==='cases'?'CASOS CLÍNICOS':state.mode==='errors'?'REVISÃO DE ERROS':'REVISÃO RÁPIDA';
  $('categoryLabel').textContent=q.category;
  $('progressText').textContent=`${state.index+1} / ${state.length}`;
  $('difficultyText').textContent=`Dificuldade ${q.difficulty}/5`;
@@ -110,7 +127,7 @@ function finish(){
  if(!state.session.length){showView('home');return;}
  const total=state.session.length;const correct=state.session.filter(x=>x.correct).length;const pct=Math.round(correct/total*100);
  $('resultAccuracy').textContent=pct+'%';$('resultDetail').textContent=`${correct} de ${total} corretas`;
- $('resultTitle').textContent=state.mode==='cat'?`Nível estimado: ${levelFromAbility(state.ability)}/5`:'Resultado da revisão';
+ $('resultTitle').textContent=state.mode==='cat'?`Nível estimado: ${levelFromAbility(state.ability)}/5`:state.mode==='hard'?'Resultado — Desafio Avançado':'Resultado da revisão';
  const by={};state.session.forEach(x=>{by[x.category]??={n:0,c:0};by[x.category].n++;if(x.correct)by[x.category].c++;});
  $('resultBreakdown').innerHTML=Object.entries(by).sort((a,b)=>a[0].localeCompare(b[0])).map(([cat,v])=>`<div><span>${cat}</span><strong>${Math.round(v.c/v.n*100)}%</strong></div>`).join('');
  $('progressBar').style.width='100%';updateHome();showView('result');
