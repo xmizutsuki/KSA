@@ -27,11 +27,11 @@ jobs:
         run: |
           node --check app.js
           node --check sources.js
-          for f in questions-{1..13}.js; do node --check "$f"; done
+          for f in inpatient-{01..10}.js; do node --check "$f"; done
           node <<'NODE'
           global.window = {};
           require('./sources.js');
-          for (let i = 1; i <= 13; i++) require(`./questions-${i}.js`);
+          for (let i = 1; i <= 10; i++) require(`./inpatient-${String(i).padStart(2, '0')}.js`);
           const qs = window.KSA_QUESTIONS;
           const sources = window.KSA_SOURCES;
           if (qs.length !== 200) throw new Error(`Expected 200 questions, found ${qs.length}`);
