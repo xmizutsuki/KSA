@@ -27,14 +27,16 @@ jobs:
         run: |
           node --check app.js
           node --check sources.js
-          for f in inpatient-{01..10}.js; do node --check "$f"; done
+          for f in inpatient-{01..10}.js hard-study-01.js hard-study-02.js; do node --check "$f"; done
           node <<'NODE'
           global.window = {};
           require('./sources.js');
           for (let i = 1; i <= 10; i++) require(`./inpatient-${String(i).padStart(2, '0')}.js`);
+          require('./hard-study-01.js');
+          require('./hard-study-02.js');
           const qs = window.KSA_QUESTIONS;
           const sources = window.KSA_SOURCES;
-          if (qs.length !== 200) throw new Error(`Expected 200 questions, found ${qs.length}`);
+          if (qs.length !== 240) throw new Error(`Expected 240 questions, found ${qs.length}`);
           const ids = new Set();
           for (const q of qs) {
             if (ids.has(q.id)) throw new Error(`Duplicate question id ${q.id}`);
@@ -45,7 +47,9 @@ jobs:
             if (q.difficulty < 1 || q.difficulty > 5) throw new Error(`Question ${q.id} has invalid difficulty`);
             if (q.source && !sources[q.source]) throw new Error(`Question ${q.id} references missing source ${q.source}`);
           }
-          console.log(`Validated ${qs.length} questions successfully.`);
+          const hard = qs.filter(q => q.difficulty >= 4);
+          if (hard.length < 40) throw new Error(`Expected at least 40 advanced questions, found ${hard.length}`);
+          console.log(`Validated ${qs.length} questions successfully; ${hard.length} are difficulty 4-5.`);
           NODE
       - name: Configure Pages
         uses: actions/configure-pages@v5
