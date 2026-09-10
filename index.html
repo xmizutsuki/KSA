@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b1f3a" />
-  <title>KSA Nurse CAT — Surgery Interview Prep</title>
+  <title>KSA Nurse CAT — KFSHRC Jeddah Inpatient Surgical Units</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,7 +13,7 @@
       <div class="brand-mark">KSA</div>
       <div>
         <h1>KSA Nurse CAT</h1>
-        <p>Staff Nurse I • Surgery Unit • Interview Review</p>
+        <p>KFSHRC Jeddah • Staff Nurse I • Inpatient Surgical Units</p>
       </div>
     </div>
     <button id="homeBtn" class="ghost small" type="button">Início</button>
@@ -23,9 +23,9 @@
     <section id="homeView" class="view active">
       <div class="hero card">
         <div>
-          <span class="eyebrow">Preparação rápida</span>
-          <h2>Treine raciocínio clínico no estilo CAT</h2>
-          <p>Questões adaptativas, casos clínicos, revisão de erros, cálculos e perguntas de entrevista. Todas as questões têm 5 alternativas.</p>
+          <span class="eyebrow">Unidade confirmada</span>
+          <h2>Inpatient Areas — Surgical Units</h2>
+          <p>Preparação direcionada para enfermagem em <strong>unidades de internação cirúrgica</strong> do KFSHRC Jeddah — não para uma função exclusiva de Operating Room/Scrub Nurse.</p>
         </div>
         <div class="hero-stat">
           <strong id="bankCount">0</strong>
@@ -33,16 +33,33 @@
         </div>
       </div>
 
+      <section class="card unit-focus">
+        <div class="section-title">
+          <div>
+            <span class="eyebrow">O que essa vaga significa</span>
+            <h3>Nursing General Services → inpatient medical & surgical units</h3>
+          </div>
+          <div class="case-stat"><strong id="caseCount">0</strong><span>questões com cenário</span></div>
+        </div>
+        <p class="muted">O KFSHRC Jeddah informa que Nursing General Services cobre todas as unidades médicas e cirúrgicas de internação. A especialidade exata pode variar, porque Surgery em Jeddah inclui ortopedia, plástica, urologia, ENT, oftalmologia, cirurgia geral e subespecialidades.</p>
+        <div class="focus-grid">
+          <div><strong>Prioridade máxima</strong><span>Post-op assessment, bleeding/shock, hypoxia, sepsis, DVT/PE</span></div>
+          <div><strong>Dispositivos</strong><span>Wounds, JP/Hemovac, chest tubes, Foley, NG tube, ostomy</span></div>
+          <div><strong>Medicações</strong><span>Opioids, anticoagulants, antibiotics, insulin, antiemetics, antidotes</span></div>
+          <div><strong>Entrevista</strong><span>Prioritization, SBAR, safety, escalation, multicultural care</span></div>
+        </div>
+      </section>
+
       <div class="grid modes">
         <button class="mode-card" data-mode="cat">
           <span class="mode-icon">◎</span>
           <strong>CAT Adaptativo</strong>
-          <small>Dificuldade sobe ou desce conforme seu desempenho.</small>
+          <small>Maior peso para deterioração e cuidados pós-operatórios.</small>
         </button>
         <button class="mode-card" data-mode="cases">
           <span class="mode-icon">✚</span>
           <strong>Casos Clínicos</strong>
-          <small>Prioridade, deterioração, pós-operatório e emergências.</small>
+          <small>Cenários de enfermaria cirúrgica, prioridade e emergências.</small>
         </button>
         <button class="mode-card" data-mode="quick">
           <span class="mode-icon">⚡</span>
@@ -59,7 +76,7 @@
       <section class="card setup-card">
         <div>
           <h3>Configuração do CAT</h3>
-          <p class="muted">O algoritmo é inspirado em CAT para estudo; não é um CAT psicométrico/IRT validado.</p>
+          <p class="muted">Algoritmo adaptativo para estudo; não é um CAT psicométrico/IRT validado.</p>
         </div>
         <label>
           Número de questões
@@ -91,7 +108,7 @@
 
       <section class="card compact">
         <h3>Referências principais</h3>
-        <p class="muted">Questões originais/parafraseadas com base em WHO, CDC, Surviving Sepsis Campaign/SCCM, NCBI, AHRQ e páginas oficiais do KFSHRC. Este app é educacional e não substitui protocolos institucionais.</p>
+        <p class="muted">KFSHRC Jeddah Nursing Services e Surgery Department, WHO, CDC, Surviving Sepsis Campaign 2026, AHRQ, ASRA, DailyMed e NCBI. Conteúdo educacional: na prática real, siga protocolos institucionais, ordens e escopo profissional.</p>
       </section>
     </section>
 
@@ -135,24 +152,11 @@
   </main>
 
   <footer>
-    <p>KSA Nurse CAT • ferramenta pessoal de revisão • conteúdo educacional</p>
+    <p>KSA Nurse CAT • KFSHRC Jeddah Inpatient Surgical Units • ferramenta pessoal de revisão</p>
   </footer>
 
   <script src="sources.js"></script>
-  <script src="questions-1.js"></script>
-  <script src="questions-2.js"></script>
-  <script src="questions-3.js"></script>
-  <script src="questions-4.js"></script>
-  <script src="questions-5.js"></script>
-  <script src="questions-6.js"></script>
-  <script src="questions-7.js"></script>
-  <script src="questions-8.js"></script>
-  <script src="questions-9.js"></script>
-  <script src="questions-10.js"></script>
-  <script src="questions-11.js"></script>
-  <script src="questions-12.js"></script>
-  <script src="questions-13.js"></script>
-  <script src="questions-14.js"></script>
+  <script src="questions-inpatient.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
