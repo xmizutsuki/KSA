@@ -1,6 +1,6 @@
 window.KSA_SOURCES={
 KFSHRC_VALUES:{label:"KFSHRC — Vision, Mission and Values",url:"https://services.kfshrc.edu.sa/external/en/home/about/visionmissionvalues"},
-KFSHRC_NURSING:{label:"KFSHRC Jeddah — Nursing Services (Nursing General Services covers all inpatient Medical and Surgical Units)",url:"https://services.kfshrc.edu.sa/en/home/hospitals/jeddah/nursingservicesj"},
+KFSHRC_NURSING:{label:"KFSHRC Jeddah — Nursing Services",url:"https://services.kfshrc.edu.sa/en/home/hospitals/jeddah/nursingservicesj"},
 KFSHRC_SURGERY:{label:"KFSHRC Jeddah — Surgery Department",url:"https://services.kfshrc.edu.sa/en/home/hospitals/jeddah/surgeryj"},
 WHO_SURGICAL:{label:"WHO — Surgical Safety Checklist",url:"https://www.who.int/teams/integrated-health-services/quality-of-care-and-patient-safety/patient-safety-guidance-and-tools/safe-surgery/tool-and-resources"},
 SCCM_SEPSIS:{label:"Surviving Sepsis Campaign — Adult Guidelines 2026",url:"https://www.sccm.org/survivingsepsiscampaign/guidelines-and-resources/surviving-sepsis-campaign-adult-guidelines"},
@@ -12,21 +12,17 @@ AHRQ_RRT:{label:"AHRQ PSNet — Rapid Response Systems",url:"https://psnet.ahrq.
 NCBI_PERIOP:{label:"NCBI Bookshelf — Perioperative Care & Postoperative Complications",url:"https://www.ncbi.nlm.nih.gov/books/NBK613066/"},
 NCBI_WOUND:{label:"NCBI Bookshelf — Wound Dehiscence",url:"https://www.ncbi.nlm.nih.gov/books/NBK551712/"},
 ACC_BLEEDING:{label:"ACC — Management of Anticoagulant-Related Bleeding",url:"https://www.acc.org/latest-in-cardiology/ten-points-to-remember/2020/07/10/11/26/2020-acc-expert-consensus-decision-pathway-on-bleeding"},
-DAILYMED_NALOXONE:{label:"DailyMed — Naloxone Hydrochloride Injection",url:"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=21d20dff-6efe-481e-a5a0-9c80ded73ca9"},
-DAILYMED_FLUMAZENIL:{label:"DailyMed — Flumazenil Injection",url:"https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=a72d9fc1-121c-455d-93a9-002378c9968f"},
-DAILYMED_PROTAMINE:{label:"DailyMed — Protamine Sulfate Injection",url:"https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=c76876da-b9a8-45d0-9278-7df3288d3a06"},
-DAILYMED_WARFARIN:{label:"DailyMed — Warfarin Sodium",url:"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bd6ea120-5d1c-4815-94f2-81e28dc6b7a9"},
-DAILYMED_PRAXBIND:{label:"DailyMed — Idarucizumab (Praxbind)",url:"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c7400f8a-dcf4-a6df-6d07-983081b1bf34"},
-DAILYMED_NAC:{label:"DailyMed — Acetylcysteine Injection",url:"https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=f811ddfc-d7c1-4637-ae81-80c38a77cb80&version=3"},
-DAILYMED_DIGIFAB:{label:"DailyMed — Digoxin Immune Fab (DigiFab)",url:"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c05ee6a5-c98b-45f4-83fd-40781639d653"},
-DAILYMED_SUGAMMADEX:{label:"DailyMed — Sugammadex Injection",url:"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=55b2eb4e-4d77-c555-e063-6294a90abf9e"},
-MHAUS_DANTROLENE:{label:"MHAUS — Malignant Hyperthermia / Dantrolene",url:"https://www.mhaus.org/healthcare-professionals/mhaus-recommendations/what-evidence-based-interventions-are-recommended-to-alleviate-hyperthermia-associated-with-malignant-hyperthermia/"},
 ASRA_LAST:{label:"ASRA — Local Anesthetic Systemic Toxicity (LAST) Checklist",url:"https://asra.com/news-publications/asra-updates/blog-landing/guidelines/2020/11/01/checklist-for-treatment-of-local-anesthetic-systemic-toxicity"},
+ASRA_ANTITHROMBOTIC:{label:"ASRA — Regional Anesthesia in Patients Receiving Antithrombotic or Thrombolytic Therapy, Fifth Edition",url:"https://rapm.bmj.com/content/50/1/7"},
+APSF_OIVI:{label:"APSF — Monitoring for Opioid-Induced Respiratory Depression",url:"https://www.apsf.org/article/monitoring-for-opioid-induced-respiratory-depression/"},
+MHAUS_MH:{label:"MHAUS — Managing an Acute Malignant Hyperthermia Crisis",url:"https://www.mhaus.org/healthcare-professionals/managing-a-crisis/"},
+AABB_TRANSFUSION:{label:"AABB — Transfusion Reaction Evaluation",url:"https://www.aabb.org/aabb-store/product/guidelines-for-the-laboratory-evaluation-of-transfusion-reactions-1744"},
 STANDARD_PHARM:{label:"Core pharmacology review — verify with institutional policy",url:"https://www.ncbi.nlm.nih.gov/books/"},
 STANDARD_CLINICAL:{label:"Core adult surgical-nursing review — verify with institutional protocol",url:"https://www.ncbi.nlm.nih.gov/books/"},
 STANDARD_NURSING:{label:"Core nursing prioritization/delegation review",url:"https://www.ncbi.nlm.nih.gov/books/"},
 CALC:{label:"Medication calculation practice — generated for study",url:""},
-INTERVIEW:{label:"Behavioral interview practice — STAR/SBAR structure",url:""},
-LEWIS_STUDY:{label:"Lewis's Medical-Surgical Nursing — uploaded postoperative, chest-tube, PE and VTE study extract",url:""}
+LEWIS_STUDY:{label:"Lewis's Medical-Surgical Nursing — postoperative, chest-tube, PE and VTE review",url:""}
 };
 window.KSA_QUESTIONS=[];
+window.KSA_CASES=window.KSA_CASES||{};
+window.addKsa=rows=>window.KSA_QUESTIONS.push(...rows.map(r=>({id:r[0],caseId:r[1],category:r[2],difficulty:5,cognitive:'Third-order clinical reasoning',q:r[3],options:r[4],answer:r[5],rationale:r[6],source:r[7]})));
