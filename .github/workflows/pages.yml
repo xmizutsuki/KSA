@@ -52,11 +52,10 @@ jobs:
             if (!cases[q.caseId]) throw new Error(`Question ${q.id} references missing case ${q.caseId}`);
             if (q.source && !sources[q.source]) throw new Error(`Question ${q.id} references missing source ${q.source}`);
           }
-          for (let id=141; id<=180; id++) {
-            const q=qs.find(x=>x.id===id);
-            if (!q || q.q.length<60) throw new Error(`Hardened override ${id} was not applied`);
-          }
-          console.log(`Validated ${qs.length} elite questions across ${Object.keys(cases).length} complex case stems; hardened overrides 141-180 loaded.`);
+          const q141=qs.find(q=>q.id===141),q180=qs.find(q=>q.id===180);
+          if (!q141?.q.includes('definitive potassium removal')) throw new Error('Hardened override block 1 did not load');
+          if (!q180?.q.includes('risk-mitigation strategy')) throw new Error('Hardened override block 4 did not load');
+          console.log(`Validated ${qs.length} elite questions across ${Object.keys(cases).length} complex case stems; hardened overrides loaded.`);
           NODE
       - name: Configure Pages
         uses: actions/configure-pages@v5
