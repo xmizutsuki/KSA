@@ -1,4 +1,4 @@
-name: Deploy KSA Nurse CAT to GitHub Pages
+name: Deploy KSA Blind Elite Review to GitHub Pages
 
 on:
   push:
@@ -23,33 +23,35 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Validate JavaScript and question bank
+      - name: Validate JavaScript and elite question bank
         run: |
           node --check app.js
           node --check sources.js
-          for f in inpatient-{01..10}.js hard-study-01.js hard-study-02.js; do node --check "$f"; done
+          node --check ultra-cases.js
+          for f in elite-{01..10}.js; do node --check "$f"; done
           node <<'NODE'
           global.window = {};
           require('./sources.js');
-          for (let i = 1; i <= 10; i++) require(`./inpatient-${String(i).padStart(2, '0')}.js`);
-          require('./hard-study-01.js');
-          require('./hard-study-02.js');
+          require('./ultra-cases.js');
+          for (let i = 1; i <= 10; i++) require(`./elite-${String(i).padStart(2, '0')}.js`);
           const qs = window.KSA_QUESTIONS;
+          const cases = window.KSA_CASES;
           const sources = window.KSA_SOURCES;
-          if (qs.length !== 240) throw new Error(`Expected 240 questions, found ${qs.length}`);
+          if (qs.length !== 200) throw new Error(`Expected 200 elite questions, found ${qs.length}`);
+          if (Object.keys(cases).length !== 40) throw new Error(`Expected 40 complex case stems, found ${Object.keys(cases).length}`);
           const ids = new Set();
           for (const q of qs) {
             if (ids.has(q.id)) throw new Error(`Duplicate question id ${q.id}`);
             ids.add(q.id);
             if (!Array.isArray(q.options) || q.options.length !== 5) throw new Error(`Question ${q.id} does not have exactly 5 options`);
+            if (new Set(q.options).size !== 5) throw new Error(`Question ${q.id} has duplicate options`);
             if (!Number.isInteger(q.answer) || q.answer < 0 || q.answer > 4) throw new Error(`Question ${q.id} has invalid answer index`);
-            if (!q.category || !q.q || !q.rationale) throw new Error(`Question ${q.id} is missing required content`);
-            if (q.difficulty < 1 || q.difficulty > 5) throw new Error(`Question ${q.id} has invalid difficulty`);
+            if (!q.category || !q.q || !q.rationale || !q.caseId) throw new Error(`Question ${q.id} is missing required content`);
+            if (q.difficulty !== 5) throw new Error(`Question ${q.id} is not elite difficulty 5`);
+            if (!cases[q.caseId]) throw new Error(`Question ${q.id} references missing case ${q.caseId}`);
             if (q.source && !sources[q.source]) throw new Error(`Question ${q.id} references missing source ${q.source}`);
           }
-          const hard = qs.filter(q => q.difficulty >= 4);
-          if (hard.length < 40) throw new Error(`Expected at least 40 advanced questions, found ${hard.length}`);
-          console.log(`Validated ${qs.length} questions successfully; ${hard.length} are difficulty 4-5.`);
+          console.log(`Validated ${qs.length} elite questions across ${Object.keys(cases).length} complex case stems.`);
           NODE
       - name: Configure Pages
         uses: actions/configure-pages@v5
