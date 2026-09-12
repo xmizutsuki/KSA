@@ -28,12 +28,13 @@ jobs:
           node --check app.js
           node --check sources.js
           node --check ultra-cases.js
-          for f in elite-{01..10}.js; do node --check "$f"; done
+          for f in elite-{01..10}.js elite-overrides-{1..4}.js; do node --check "$f"; done
           node <<'NODE'
           global.window = {};
           require('./sources.js');
           require('./ultra-cases.js');
           for (let i = 1; i <= 10; i++) require(`./elite-${String(i).padStart(2, '0')}.js`);
+          for (let i = 1; i <= 4; i++) require(`./elite-overrides-${i}.js`);
           const qs = window.KSA_QUESTIONS;
           const cases = window.KSA_CASES;
           const sources = window.KSA_SOURCES;
@@ -51,7 +52,11 @@ jobs:
             if (!cases[q.caseId]) throw new Error(`Question ${q.id} references missing case ${q.caseId}`);
             if (q.source && !sources[q.source]) throw new Error(`Question ${q.id} references missing source ${q.source}`);
           }
-          console.log(`Validated ${qs.length} elite questions across ${Object.keys(cases).length} complex case stems.`);
+          for (let id=141; id<=180; id++) {
+            const q=qs.find(x=>x.id===id);
+            if (!q || q.q.length<60) throw new Error(`Hardened override ${id} was not applied`);
+          }
+          console.log(`Validated ${qs.length} elite questions across ${Object.keys(cases).length} complex case stems; hardened overrides 141-180 loaded.`);
           NODE
       - name: Configure Pages
         uses: actions/configure-pages@v5
