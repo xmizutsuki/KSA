@@ -28,18 +28,23 @@ jobs:
           node --check app.js
           node --check sources.js
           node --check ultra-cases.js
+          node --check flashcards.js
           for f in elite-{01..10}.js elite-overrides-{1..4}.js; do node --check "$f"; done
           node <<'NODE'
           global.window = {};
           require('./sources.js');
           require('./ultra-cases.js');
+          require('./flashcards.js');
           for (let i = 1; i <= 10; i++) require(`./elite-${String(i).padStart(2, '0')}.js`);
           for (let i = 1; i <= 4; i++) require(`./elite-overrides-${i}.js`);
           const qs = window.KSA_QUESTIONS;
           const cases = window.KSA_CASES;
           const sources = window.KSA_SOURCES;
+          const cards = window.KSA_FLASHCARDS;
           if (qs.length !== 200) throw new Error(`Expected 200 elite questions, found ${qs.length}`);
           if (Object.keys(cases).length !== 40) throw new Error(`Expected 40 complex case stems, found ${Object.keys(cases).length}`);
+          if (!Array.isArray(cards) || cards.length !== 6) throw new Error(`Expected 6 respiratory flashcards, found ${cards?.length}`);
+          for (const c of cards) if (!c.finding || !c.think || !c.action || !c.pearl) throw new Error(`Flashcard ${c.id} is incomplete`);
           const ids = new Set();
           for (const q of qs) {
             if (ids.has(q.id)) throw new Error(`Duplicate question id ${q.id}`);
@@ -55,7 +60,7 @@ jobs:
           const q141=qs.find(q=>q.id===141),q180=qs.find(q=>q.id===180);
           if (!q141?.q.includes('definitive potassium removal')) throw new Error('Hardened override block 1 did not load');
           if (!q180?.q.includes('risk-mitigation strategy')) throw new Error('Hardened override block 4 did not load');
-          console.log(`Validated ${qs.length} elite questions across ${Object.keys(cases).length} complex case stems; hardened overrides loaded.`);
+          console.log(`Validated ${qs.length} elite questions, ${Object.keys(cases).length} complex cases, and ${cards.length} flashcards.`);
           NODE
       - name: Configure Pages
         uses: actions/configure-pages@v5
