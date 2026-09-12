@@ -7,6 +7,7 @@
   <title>KSA Surgical Unit — Blind Elite Review</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="elite.css" />
+  <link rel="stylesheet" href="flashcards.css" />
 </head>
 <body>
   <header class="topbar">
@@ -49,6 +50,7 @@
         <button class="mode-card" data-mode="pharm"><span class="mode-icon">Rx</span><strong>Pharm / Anticoag</strong><small>Anticoagulação, reversão, opioides, HIT, toxicidades e segurança.</small></button>
         <button class="mode-card" data-mode="quick"><span class="mode-icon">⚡</span><strong>Elite Sprint</strong><small>10 questões cegas para revisão rápida.</small></button>
         <button class="mode-card" data-mode="errors"><span class="mode-icon">↺</span><strong>Revisar Erros</strong><small>Neste modo, feedback e categoria aparecem após cada resposta.</small></button>
+        <button id="openFlashcards" class="mode-card" type="button"><span class="mode-icon">▣</span><strong>Respiratory Flashcards</strong><small>Achado → hipótese prioritária → ação de enfermagem. Revisão rápida de via aérea e deterioração respiratória.</small></button>
       </div>
 
       <section class="card setup-card">
@@ -62,6 +64,37 @@
       </section>
 
       <section class="card compact"><h3>Referências</h3><p class="muted">SCCM/Surviving Sepsis Campaign 2026, ASRA, APSF, MHAUS, ACC, AABB, CDC, NCBI, Lewis's Medical-Surgical Nursing e referências de segurança medicamentosa. Conteúdo educacional: na prática clínica, siga os protocolos institucionais e o escopo profissional.</p></section>
+    </section>
+
+    <section id="flashcardsView" class="view">
+      <div class="flashcards-shell">
+        <div class="flashcards-head">
+          <div>
+            <span class="eyebrow">Rapid Review</span>
+            <h2>Postoperative Airway & Breathing Flashcards</h2>
+            <p class="muted">Veja o achado, formule mentalmente a hipótese e a prioridade; depois clique no cartão para revelar.</p>
+          </div>
+          <div class="flashcards-controls"><button id="shuffleFlashcards" class="ghost small" type="button">Embaralhar</button></div>
+        </div>
+        <div class="flashcard-counter" id="flashcardCounter">1 / 6</div>
+        <div class="flashcard-stage">
+          <div id="flashcard" class="flashcard" role="button" tabindex="0" aria-label="Flashcard. Clique para revelar a resposta.">
+            <div class="flashcard-face flashcard-front">
+              <span id="flashTagFront" class="flash-tag">Airway</span>
+              <h3 id="flashFinding">Achado clínico</h3>
+              <div class="flash-hint">Clique ou pressione Enter para revelar “Think first” e a ação prioritária.</div>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <span id="flashTagBack" class="flash-tag">Airway</span>
+              <div class="flash-block"><div class="flash-label">Think first</div><strong id="flashThink"></strong></div>
+              <div class="flash-block"><div class="flash-label">High-priority nursing action</div><p id="flashAction"></p></div>
+              <div class="flash-pearl"><strong>Clinical pearl</strong><div id="flashPearl"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="flash-nav"><button id="prevFlashcard" class="ghost" type="button">← Anterior</button><button id="nextFlashcard" class="primary" type="button">Próximo →</button></div>
+        <div class="flashcards-note">Material educacional para revisão. Em prática clínica, siga protocolos institucionais, ordens e escopo profissional.</div>
+      </div>
     </section>
 
     <section id="quizView" class="view">
@@ -89,6 +122,7 @@
   <script src="elite-01.js"></script><script src="elite-02.js"></script><script src="elite-03.js"></script><script src="elite-04.js"></script><script src="elite-05.js"></script>
   <script src="elite-06.js"></script><script src="elite-07.js"></script><script src="elite-08.js"></script><script src="elite-09.js"></script><script src="elite-10.js"></script>
   <script src="elite-overrides-1.js"></script><script src="elite-overrides-2.js"></script><script src="elite-overrides-3.js"></script><script src="elite-overrides-4.js"></script>
+  <script src="flashcards.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
