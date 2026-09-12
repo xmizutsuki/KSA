@@ -4,17 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b1f3a" />
-  <title>KSA Surgical Unit Expert Review — KFSHRC Jeddah</title>
+  <title>KSA Surgical Unit — Blind Elite Review</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="elite.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="brand">
       <div class="brand-mark">KSA</div>
-      <div>
-        <h1>Surgical Unit Expert Review</h1>
-        <p>KFSHRC Jeddah • Staff Nurse I • Inpatient Surgical Units</p>
-      </div>
+      <div><h1>Blind Elite Surgical Review</h1><p>KFSHRC Jeddah • Staff Nurse I • Inpatient Surgical Units</p></div>
     </div>
     <button id="homeBtn" class="ghost small" type="button">Início</button>
   </header>
@@ -23,147 +21,73 @@
     <section id="homeView" class="view active">
       <div class="hero card">
         <div>
-          <span class="eyebrow">Banco reformulado</span>
-          <h2>Expert Surgical Inpatient Review</h2>
-          <p>Banco reconstruído para <strong>raciocínio clínico avançado</strong>. Não há CAT e não há questões básicas: todos os itens ativos são classificados como <strong>Expert 5/5</strong>, com cenários complexos, dados conflitantes, tendências, priorização, farmacologia e complicações cirúrgicas.</p>
+          <span class="eyebrow">Banco reconstruído</span>
+          <h2>200 questões de raciocínio clínico avançado</h2>
+          <p>Casos cirúrgicos de alta complexidade com dados concorrentes, tendências, mecanismos, prioridades e alternativas plausíveis. O objetivo agora é <strong>discriminar entre respostas que parecem corretas</strong>, não reconhecer uma palavra-chave.</p>
+          <div class="blind-note"><span class="exam-rule">Modo cego:</span> a categoria, o gabarito e a justificativa ficam ocultos até o fim da sessão. Isso impede que uma questão entregue a resposta de outra.</div>
         </div>
-        <div class="hero-stat">
-          <strong id="bankCount">0</strong>
-          <span>questões expert</span>
-        </div>
+        <div class="hero-stat"><strong id="bankCount">0</strong><span>questões elite</span></div>
       </div>
 
       <section class="card unit-focus">
         <div class="section-title">
-          <div>
-            <span class="eyebrow">Foco da vaga</span>
-            <h3>Inpatient Areas — Surgical Units</h3>
-          </div>
-          <div class="case-stat"><strong id="caseCount">0</strong><span>questões com cenário</span></div>
+          <div><span class="eyebrow">Inpatient Areas — Surgical Units</span><h3>Third-order clinical reasoning</h3></div>
+          <div class="case-stat"><strong id="caseCount">0</strong><span>cenários complexos</span></div>
         </div>
-        <p class="muted">As questões priorizam decisões de enfermagem em pacientes cirúrgicos internados: deterioração pós-operatória, choque oculto, complicações respiratórias, DVT/PE, chest tubes, feridas e drenos, sepse, anticoagulação, analgesia, eletrólitos, cálculos, delegação, escalonamento e complicações específicas de cirurgia.</p>
+        <p class="muted">Cada cenário gera decisões diferentes: hipótese mais provável, dado discriminador, intervenção prioritária, contraindicação, mecanismo fisiopatológico, escalonamento, cálculo ou SBAR. As categorias clínicas ficam escondidas durante a prova.</p>
         <div class="focus-grid">
-          <div><strong>Hemodinâmica</strong><span>Occult bleeding, shock, perfusion trends, lactate, oliguria</span></div>
-          <div><strong>Respiratório</strong><span>PE, opioid hypoventilation, chest tubes, airway emergencies</span></div>
-          <div><strong>Farmacologia</strong><span>Anticoagulants, antidotes, insulin, opioids, LAST, interactions</span></div>
-          <div><strong>Raciocínio</strong><span>Prioritization, delegation, SBAR, differential diagnosis, escalation</span></div>
+          <div><strong>Deterioração oculta</strong><span>concealed bleeding, shock, PE, sepsis, leak, airway compromise</span></div>
+          <div><strong>Dispositivos & cirurgia</strong><span>chest tube, NG, ostomy, transplant, spine, thyroid, orthopedics</span></div>
+          <div><strong>Farmacologia de alto risco</strong><span>opioids, anticoagulants, HIT, LAST, MH, insulin, QT, reversal</span></div>
+          <div><strong>Decisão de enfermagem</strong><span>prioritization, delegation, calculations, trends, escalation, SBAR</span></div>
         </div>
       </section>
 
       <div class="grid modes">
-        <button class="mode-card" data-mode="expert">
-          <span class="mode-icon">🔥</span>
-          <strong>Expert Exam</strong>
-          <small>Banco completo 5/5. Questões aleatórias e equilibradas por categoria.</small>
-        </button>
-        <button class="mode-card" data-mode="cases">
-          <span class="mode-icon">✚</span>
-          <strong>Casos Expert</strong>
-          <small>Somente questões com cenários clínicos complexos.</small>
-        </button>
-        <button class="mode-card" data-mode="pharm">
-          <span class="mode-icon">Rx</span>
-          <strong>Farmacologia Expert</strong>
-          <small>Anticoagulação, reversão, opioides, insulin, toxicidades e segurança medicamentosa.</small>
-        </button>
-        <button class="mode-card" data-mode="quick">
-          <span class="mode-icon">⚡</span>
-          <strong>Sprint Expert</strong>
-          <small>10 questões difíceis para uma revisão rápida.</small>
-        </button>
-        <button class="mode-card" data-mode="errors">
-          <span class="mode-icon">↺</span>
-          <strong>Revisar Erros</strong>
-          <small>Refaça somente as questões que você errou.</small>
-        </button>
+        <button class="mode-card" data-mode="elite"><span class="mode-icon">◆</span><strong>Blind Elite Exam</strong><small>Banco completo. Sem categoria nem feedback até o final.</small></button>
+        <button class="mode-card" data-mode="critical"><span class="mode-icon">⚠</span><strong>Critical Cases</strong><small>Choque, via aérea, sepse, PE, tórax, transfusão e emergências.</small></button>
+        <button class="mode-card" data-mode="pharm"><span class="mode-icon">Rx</span><strong>Pharm / Anticoag</strong><small>Anticoagulação, reversão, opioides, HIT, toxicidades e segurança.</small></button>
+        <button class="mode-card" data-mode="quick"><span class="mode-icon">⚡</span><strong>Elite Sprint</strong><small>10 questões cegas para revisão rápida.</small></button>
+        <button class="mode-card" data-mode="errors"><span class="mode-icon">↺</span><strong>Revisar Erros</strong><small>Neste modo, feedback e categoria aparecem após cada resposta.</small></button>
       </div>
 
       <section class="card setup-card">
-        <div>
-          <h3>Configuração do exame</h3>
-          <p class="muted">A dificuldade não se adapta ao desempenho. O nível permanece máximo do início ao fim.</p>
-        </div>
-        <label>
-          Número de questões
-          <select id="examLength">
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="50">50</option>
-            <option value="80">80</option>
-          </select>
-        </label>
+        <div><h3>Configuração do exame</h3><p class="muted">Não existe CAT nem redução de dificuldade. O banco permanece em nível máximo.</p></div>
+        <label>Número de questões<select id="examLength"><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="80">80</option></select></label>
       </section>
 
       <section class="card">
-        <div class="section-title">
-          <div>
-            <span class="eyebrow">Desempenho local</span>
-            <h3>Seu progresso</h3>
-          </div>
-          <button id="resetStats" class="ghost danger small" type="button">Limpar histórico</button>
-        </div>
-        <div class="stats-grid">
-          <div><strong id="statAnswered">0</strong><span>respondidas</span></div>
-          <div><strong id="statAccuracy">—</strong><span>acertos</span></div>
-          <div><strong id="statErrors">0</strong><span>para revisar</span></div>
-        </div>
+        <div class="section-title"><div><span class="eyebrow">Desempenho local</span><h3>Seu progresso</h3></div><button id="resetStats" class="ghost danger small" type="button">Limpar histórico</button></div>
+        <div class="stats-grid"><div><strong id="statAnswered">0</strong><span>respondidas</span></div><div><strong id="statAccuracy">—</strong><span>acertos</span></div><div><strong id="statErrors">0</strong><span>para revisar</span></div></div>
       </section>
 
-      <section class="card compact">
-        <h3>Referências principais</h3>
-        <p class="muted">Conteúdo educacional baseado em referências de enfermagem médico-cirúrgica e fontes institucionais como KFSHRC, SCCM/Surviving Sepsis Campaign, CDC, ASRA, MHAUS, ACC, DailyMed e literatura clínica. Na prática real, siga os protocolos institucionais, ordens médicas e escopo profissional.</p>
-      </section>
+      <section class="card compact"><h3>Referências</h3><p class="muted">SCCM/Surviving Sepsis Campaign 2026, ASRA, APSF, MHAUS, ACC, AABB, CDC, NCBI, Lewis's Medical-Surgical Nursing e referências de segurança medicamentosa. Conteúdo educacional: na prática clínica, siga os protocolos institucionais e o escopo profissional.</p></section>
     </section>
 
     <section id="quizView" class="view">
-      <div class="quiz-head">
-        <div>
-          <span id="modeLabel" class="pill">EXPERT EXAM</span>
-          <span id="categoryLabel" class="muted"></span>
-        </div>
-        <div class="quiz-meta">
-          <span id="progressText">1 / 20</span>
-          <span id="difficultyText">Expert • 5/5</span>
-        </div>
-      </div>
+      <div class="quiz-head"><div><span id="modeLabel" class="pill">BLIND ELITE EXAM</span><span id="categoryLabel" class="muted">Categoria oculta</span></div><div class="quiz-meta"><span id="progressText">1 / 20</span><span id="difficultyText">Elite • 3rd-order</span></div></div>
       <div class="progress"><div id="progressBar"></div></div>
-
       <article class="card question-card">
-        <div id="caseBox" class="case-box hidden"></div>
-        <h2 id="questionText"></h2>
-        <div id="options" class="options"></div>
-        <div id="feedback" class="feedback hidden"></div>
-        <div class="question-actions">
-          <button id="nextBtn" class="primary hidden" type="button">Próxima questão</button>
-          <button id="quitBtn" class="ghost" type="button">Encerrar</button>
-        </div>
+        <div id="caseBox" class="case-box hidden"></div><h2 id="questionText"></h2><div id="options" class="options"></div><div id="feedback" class="feedback hidden"></div>
+        <div class="question-actions"><button id="nextBtn" class="primary hidden" type="button">Próxima questão</button><button id="quitBtn" class="ghost" type="button">Encerrar</button></div>
       </article>
     </section>
 
     <section id="resultView" class="view">
       <article class="card result-card">
-        <span class="eyebrow">Sessão concluída</span>
-        <h2 id="resultTitle">Resultado</h2>
-        <div class="result-score"><strong id="resultAccuracy">0%</strong><span id="resultDetail"></span></div>
+        <span class="eyebrow">Sessão concluída</span><h2 id="resultTitle">Resultado</h2><div class="result-score"><strong id="resultAccuracy">0%</strong><span id="resultDetail"></span></div>
         <div id="resultBreakdown" class="breakdown"></div>
-        <div class="result-actions">
-          <button id="restartBtn" class="primary" type="button">Treinar novamente</button>
-          <button id="resultHomeBtn" class="ghost" type="button">Voltar ao início</button>
-        </div>
+        <h3 class="result-review-title">Revisão clínica completa</h3><div id="resultReview" class="review-list"></div>
+        <div class="result-actions"><button id="restartBtn" class="primary" type="button">Treinar novamente</button><button id="resultHomeBtn" class="ghost" type="button">Voltar ao início</button></div>
       </article>
     </section>
   </main>
 
-  <footer>
-    <p>KSA Surgical Unit Expert Review • KFSHRC Jeddah Inpatient Surgical Units • ferramenta pessoal de revisão</p>
-  </footer>
-
+  <footer><p>KSA Blind Elite Surgical Review • ferramenta pessoal de revisão</p></footer>
   <script src="sources.js"></script>
-  <script src="expert-01.js"></script>
-  <script src="expert-02.js"></script>
-  <script src="expert-03.js"></script>
-  <script src="expert-04.js"></script>
+  <script src="ultra-cases.js"></script>
+  <script src="elite-01.js"></script><script src="elite-02.js"></script><script src="elite-03.js"></script><script src="elite-04.js"></script><script src="elite-05.js"></script>
+  <script src="elite-06.js"></script><script src="elite-07.js"></script><script src="elite-08.js"></script><script src="elite-09.js"></script><script src="elite-10.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
